@@ -121,7 +121,19 @@ while True:
             cv2.putText(img, name, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0), 2)
 
             addToSheet(name)
+              
+        else:
+        print("else reached")
+        name = "Unknown"
+        y1, x2, y2, x1 = faceLoc
+        y1, x2, y2, x1 = y1 * 4, x2 * 4, y2 * 4, x1 * 4
 
+        cv2.rectangle(img, (x1, y1), (x2, y2), (255, 0, 0), 2)
+        cv2.rectangle(img, (x1, y2 - 35), (x2, y2), (255, 0, 0), cv2.FILLED)
+        cv2.putText(img, name, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0), 2)
+        addToSheet("Unknown")
+
+        
     key = cv2.waitKey(1) & 0xFF
     if key == ord("q"):
         break
